@@ -1,0 +1,35 @@
+<h1>Editing snip</h1>
+
+<%= form_for :snip, url: snip_path(@snip), method: :patch do |f| %>
+
+  <% if @snip.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@snip.errors.count, "error") %> prohibited
+        this snip from being saved:
+      </h2>
+      <ul>
+        <% @snip.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :code %><br>
+    <%= f.text_area :code %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', snips_path %>

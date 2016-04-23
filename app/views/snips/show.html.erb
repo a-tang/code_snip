@@ -1,0 +1,31 @@
+<p>
+  <strong>Title:</strong>
+  <%= @snip.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @snip.code %>
+</p>
+
+<h2>Comments</h2>
+<% @snip.comments.each do |comment| %>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@snip, @snip.comments.build]) do |f| %>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', snips_path %>|
+<%= link_to 'Edit', edit_snip_path(@snip) %>

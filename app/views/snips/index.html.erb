@@ -1,0 +1,20 @@
+<h1>Index Page</h1>
+<%= link_to 'New Snip', new_snip_path %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Code</th>
+  </tr>
+
+  <% @snips.each do |snip| %>
+    <tr>
+      <td><%= snip.title %></td>
+      <td><%= snip.code %></td>
+      <td><%= link_to 'Show |', snip_path(snip) %></td>
+      <td><%= link_to 'Edit |', edit_snip_path(snip) %></td>
+      <td><%= link_to 'Delete', snip_path(snip),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
